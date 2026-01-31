@@ -1,9 +1,12 @@
 {
   "name": "contact-form",
   "version": "1.0.0",
-  "description": "",
+  "description": "Professional contact form with Node.js and Express",
   "main": "app.js",
+  "type": "module",
   "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -13,11 +16,13 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module",
   "bugs": {
     "url": "https://github.com/pdunmire-pcd/contact-form/issues"
   },
   "homepage": "https://github.com/pdunmire-pcd/contact-form#readme",
+  "engines": {
+    "node": "18.x"
+  },
   "dependencies": {
     "express": "^5.2.1"
   },
