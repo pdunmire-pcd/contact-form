@@ -128,3 +128,31 @@ footer a {
 footer a:hover {
     text-decoration: underline;
 }
+
+/* Validation error styling */
+.error-message {
+    display:block;
+    color: #dc3545;
+    font-size: 12px;
+    margin-top: 5px;
+    min-height: 18px;
+    font-weight: normal;
+}
+
+input.invalid,
+select.invalid,
+textarea.invalid {
+    border: 2px solid #dc3545;
+    background-color: #fff5f5;
+}
+
+input.valid,
+select.valid,
+textarea.valid {
+    border: 2px solid #28a745;
+}
+
+/* Hide elements by default (for optional challenges) */
+.hidden {
+    display: none;
+}
