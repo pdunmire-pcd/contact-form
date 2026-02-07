@@ -34,6 +34,21 @@ document.addEventListener('DOMContentLoaded', function() {
         const errorElement = document.getElementById(inputElement.id + '-error');
         errorElement.textContent = '';
     }
+
+    // Get "other" container
+    const otherContainer = document.getElementById('otherContainer');
+    const otherInput = document.getElementById('other');
+
+    // Show/hide "Other" textbox based on dropdown selection
+    howDidWeMeet.addEventListener('change', function() {
+        if (howDidWeMeet.value === 'other') {
+            otherContainer.classList.remove('hidden');
+        } else {
+            otherContainer.classList.add('hidden');
+            // Clear the "other" field if they switch away from "other"
+            otherInput.value = '';
+        }
+    });
     
     // Form submit event listener (we'll add validation here)
     form.addEventListener('submit', function(e) {
@@ -101,6 +116,27 @@ document.addEventListener('DOMContentLoaded', function() {
                 firstError.focus();
             }
         }
+
+        // Re-validate email when mailing list checkbox changes
+        mailingList.addEventListener('change', function() {
+            // Trigger email validation
+            email.dispatchEvent(new Event('blur'));
+
+        // Get email format group
+        const emailFormatGroup = document.getElementById('emailFormatGroup');
+
+        // Show/hide email format options based on mailing list checkbox
+        mailingList.addEventListener('change', function() {
+            if (mailingList.checked) {
+                emailFormatGroup.classList.remove('hidden');
+            } else {
+                emailFormatGroup.classList.add('hidden');
+            }
+    
+            // Re-validate email
+            email.dispatchEvent(new Event('blur'));
+        });
+});
     // Real-time validation on blur (when user leaves a field)
 
     fname.addEventListener('blur', function() {
