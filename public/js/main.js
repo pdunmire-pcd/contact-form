@@ -11,6 +11,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const linkedinUrl = document.getElementById('linkedinUrl');
     const howDidWeMeet = document.getElementById('howDidWeMeet');
     const mailingList = document.getElementById('mailingList');
+    const emailFormatGroup = document.getElementById('emailFormatGroup');
+    const otherContainer = document.getElementById('otherContainer');
+    const otherInput = document.getElementById('other');
     
     // Helper function to show error message
     function showError(inputElement, message) {
@@ -28,38 +31,17 @@ document.addEventListener('DOMContentLoaded', function() {
         inputElement.classList.add('valid');
     }
     
-    // Helper function to clear validation styling (for fields that pass)
-    function clearValidation(inputElement) {
-        inputElement.classList.remove('invalid', 'valid');
-        const errorElement = document.getElementById(inputElement.id + '-error');
-        errorElement.textContent = '';
-    }
-
-    // Get "other" container
-    const otherContainer = document.getElementById('otherContainer');
-    const otherInput = document.getElementById('other');
-
-    // Show/hide "Other" textbox based on dropdown selection
-    howDidWeMeet.addEventListener('change', function() {
-        if (howDidWeMeet.value === 'other') {
-            otherContainer.classList.remove('hidden');
-        } else {
-            otherContainer.classList.add('hidden');
-            // Clear the "other" field if they switch away from "other"
-            otherInput.value = '';
-        }
-    });
-    
-    // Form submit event listener (we'll add validation here)
+    // Form submit event listener
     form.addEventListener('submit', function(e) {
         e.preventDefault();         
         let isValid = true; 
 
-        if(fname.value.trim() === ''){
+        // Validate First Name
+        if (fname.value.trim() === '') {
             showError(fname, 'First name is required');
-            isValid =false;
+            isValid = false;
         } else {
-        clearError(fname);
+            clearError(fname);
         }
 
         // Validate Last Name
@@ -67,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
             showError(lname, 'Last name is required');
             isValid = false;
         } else {
-        clearError(lname);
+            clearError(lname);
         }
         
         // Validate Email
@@ -102,7 +84,6 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             clearError(howDidWeMeet);
         }
-            });
 
         // If all validations passed, submit the form
         if (isValid) {
@@ -116,29 +97,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 firstError.focus();
             }
         }
+    });
 
-        // Re-validate email when mailing list checkbox changes
-        mailingList.addEventListener('change', function() {
-            // Trigger email validation
-            email.dispatchEvent(new Event('blur'));
-
-        // Get email format group
-        const emailFormatGroup = document.getElementById('emailFormatGroup');
-
-        // Show/hide email format options based on mailing list checkbox
-        mailingList.addEventListener('change', function() {
-            if (mailingList.checked) {
-                emailFormatGroup.classList.remove('hidden');
-            } else {
-                emailFormatGroup.classList.add('hidden');
-            }
-    
-            // Re-validate email
-            email.dispatchEvent(new Event('blur'));
-        });
-});
     // Real-time validation on blur (when user leaves a field)
-
     fname.addEventListener('blur', function() {
         if (fname.value.trim() === '') {
             showError(fname, 'First name is required');
@@ -185,5 +146,28 @@ document.addEventListener('DOMContentLoaded', function() {
             clearError(howDidWeMeet);
         }
     });
+
+    // Show/hide "Other" textbox based on dropdown selection
+    howDidWeMeet.addEventListener('change', function() {
+        if (howDidWeMeet.value === 'other') {
+            otherContainer.classList.remove('hidden');
+        } else {
+            otherContainer.classList.add('hidden');
+            // Clear the "other" field if they switch away from "other"
+            otherInput.value = '';
+        }
+    });
+
+    // Show/hide email format options and re-validate email when mailing list changes
+    mailingList.addEventListener('change', function() {
+        if (mailingList.checked) {
+            emailFormatGroup.classList.remove('hidden');
+        } else {
+            emailFormatGroup.classList.add('hidden');
+        }
+        
+        // Re-validate email
+        email.dispatchEvent(new Event('blur'));
+    });
+
 });
-    
