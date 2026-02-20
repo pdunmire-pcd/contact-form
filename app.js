@@ -2,7 +2,7 @@ import express from 'express';
 import { dirname, join } from 'path';
 
 const app = express();
-const PORT = 3000;
+const PORT = 3004;
 
 // In-memory "database"
 const contacts = [];
