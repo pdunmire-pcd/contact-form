@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - All Submissions</title>
+</head>
+<body>
+  <h1>All Contact Submissions</h1>
+  <% if (contacts.length === 0) { %>
+    <p>No submissions yet.</p>
+  <% } else { %>
+    <% contacts.forEach(contact => { %>
+      <div style="border: 1px solid #ccc; margin: 1rem; padding: 1rem;">
+        <% Object.entries(contact).forEach(([key, value]) => { %>
+          <p><strong><%= key %>:</strong> <%= value %></p>
+        <% }) %>
+      </div>
+    <% }) %>
+  <% } %>
+</body>
+</html>

@@ -87,8 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // If all validations passed, submit the form
         if (isValid) {
-            alert('Form is valid! (In a real app, this would submit to the server)');
-            // form.submit(); // Uncomment this in production
+            form.submit();
         } else {
             // Scroll to first error
             const firstError = document.querySelector('.invalid');

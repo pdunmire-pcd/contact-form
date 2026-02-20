@@ -1,19 +1,42 @@
-//import the express module
 import express from 'express';
+import { dirname, join } from 'path';
 
-//create an instance of express
 const app = express();
-
-//define a port number
 const PORT = 3000;
 
-app.use(express.static('public'));
+// In-memory "database"
+const contacts = [];
 
-//set up a basic route
+// Middleware
+app.use(express.static('public'));
+app.use(express.urlencoded({ extended: true })); // parses form data
+
+// Tell Express to use EJS
+app.set('view engine', 'ejs');
+app.set('views', join(import.meta.dirname, 'views'));
+
+// Home page (your form)
 app.get('/', (req, res) => {
-    res.sendFile(`${import.meta.dirname}/views/home.html`);
+  res.render('home');
 });
-//start the server
+
+// Handle form submission
+app.post('/submit', (req, res) => {
+  const contact = req.body;   // grab form data
+  contacts.push(contact);     // store it in the array
+  res.redirect('/confirmation');
+});
+
+// Confirmation page
+app.get('/confirmation', (req, res) => {
+  res.render('confirmation');
+});
+
+// Admin page — shows all submissions
+app.get('/admin', (req, res) => {
+  res.render('admin', { contacts });
+});
+
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
