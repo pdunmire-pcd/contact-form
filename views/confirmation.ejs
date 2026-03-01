@@ -2,11 +2,82 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Confirmation</title>
   <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="icon" type="image/jpeg" href="/images/favicon.jpg">
 </head>
 <body>
-  <h1>Thanks! Your message was received.</h1>
-  <a href="/">← Back to the form</a>
+
+  <%- include('partials/navbar') %>
+
+  <div class="page-wrapper">
+    <h1>✅ Thanks! Your message was received.</h1>
+
+    <div class="card">
+      <h2 style="margin-bottom:18px;">Here's what you submitted:</h2>
+
+      <% if (contact.fname || contact.lname) { %>
+      <div class="card-row">
+        <label>Name:</label>
+        <span><%= contact.fname %> <%= contact.lname %></span>
+      </div>
+      <% } %>
+
+      <% if (contact.jobtitle) { %>
+      <div class="card-row">
+        <label>Job Title:</label>
+        <span><%= contact.jobtitle %></span>
+      </div>
+      <% } %>
+
+      <% if (contact.company) { %>
+      <div class="card-row">
+        <label>Company:</label>
+        <span><%= contact.company %></span>
+      </div>
+      <% } %>
+
+      <% if (contact.email) { %>
+      <div class="card-row">
+        <label>Email:</label>
+        <span><%= contact.email %></span>
+      </div>
+      <% } %>
+
+      <% if (contact.linkedinUrl) { %>
+      <div class="card-row">
+        <label>LinkedIn:</label>
+        <span><a href="<%= contact.linkedinUrl %>" target="_blank"><%= contact.linkedinUrl %></a></span>
+      </div>
+      <% } %>
+
+      <% if (contact.howDidWeMeet) { %>
+      <div class="card-row">
+        <label>How We Met:</label>
+        <span><%= contact.howDidWeMeet %><%= contact.other ? ' – ' + contact.other : '' %></span>
+      </div>
+      <% } %>
+
+      <% if (contact.message) { %>
+      <div class="card-row">
+        <label>Message:</label>
+        <span><%= contact.message %></span>
+      </div>
+      <% } %>
+
+      <% if (contact.mailingList) { %>
+      <div class="card-row">
+        <label>Mailing List:</label>
+        <span>Opted in<%= contact.emailFormat ? ' (' + contact.emailFormat + ' format)' : '' %></span>
+      </div>
+      <% } %>
+
+      <p class="timestamp">Submitted: <%= contact.timestamp %></p>
+    </div>
+
+    <a class="btn" href="/contact">← Submit Another Response</a>
+  </div>
+
 </body>
 </html>

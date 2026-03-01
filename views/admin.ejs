@@ -2,20 +2,75 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Admin - All Submissions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin – All Submissions</title>
+  <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="icon" type="image/jpeg" href="/images/favicon.jpg">
 </head>
 <body>
-  <h1>All Contact Submissions</h1>
-  <% if (contacts.length === 0) { %>
-    <p>No submissions yet.</p>
-  <% } else { %>
-    <% contacts.forEach(contact => { %>
-      <div style="border: 1px solid #ccc; margin: 1rem; padding: 1rem;">
-        <% Object.entries(contact).forEach(([key, value]) => { %>
-          <p><strong><%= key %>:</strong> <%= value %></p>
-        <% }) %>
+
+  <%- include('partials/navbar') %>
+
+  <div class="page-wrapper">
+    <h1>Admin – All Contact Submissions</h1>
+    <p style="color:#666; margin-bottom:24px;"><%= contacts.length %> submission<%= contacts.length !== 1 ? 's' : '' %> total</p>
+
+    <% if (contacts.length === 0) { %>
+      <div class="card">
+        <p style="text-align:center; color:#888;">📭 No submissions yet.</p>
       </div>
-    <% }) %>
-  <% } %>
+    <% } else { %>
+      <% contacts.slice().reverse().forEach((contact, i) => { %>
+        <div class="card">
+          <h3 style="margin-bottom:14px;">#<%= contacts.length - i %> — <%= contact.fname %> <%= contact.lname %></h3>
+
+          <% if (contact.jobtitle || contact.company) { %>
+          <div class="card-row">
+            <label>Position:</label>
+            <span><%= contact.jobtitle %><%= contact.jobtitle && contact.company ? ' at ' : '' %><%= contact.company %></span>
+          </div>
+          <% } %>
+
+          <% if (contact.email) { %>
+          <div class="card-row">
+            <label>Email:</label>
+            <span><a href="mailto:<%= contact.email %>"><%= contact.email %></a></span>
+          </div>
+          <% } %>
+
+          <% if (contact.linkedinUrl) { %>
+          <div class="card-row">
+            <label>LinkedIn:</label>
+            <span><a href="<%= contact.linkedinUrl %>" target="_blank"><%= contact.linkedinUrl %></a></span>
+          </div>
+          <% } %>
+
+          <% if (contact.howDidWeMeet) { %>
+          <div class="card-row">
+            <label>How We Met:</label>
+            <span><%= contact.howDidWeMeet %><%= contact.other ? ' – ' + contact.other : '' %></span>
+          </div>
+          <% } %>
+
+          <% if (contact.message) { %>
+          <div class="card-row">
+            <label>Message:</label>
+            <span><%= contact.message %></span>
+          </div>
+          <% } %>
+
+          <% if (contact.mailingList) { %>
+          <div class="card-row">
+            <label>Mailing List:</label>
+            <span>Opted in<%= contact.emailFormat ? ' (' + contact.emailFormat + ' format)' : '' %></span>
+          </div>
+          <% } %>
+
+          <p class="timestamp">Submitted: <%= contact.timestamp %></p>
+        </div>
+      <% }) %>
+    <% } %>
+  </div>
+
 </body>
 </html>

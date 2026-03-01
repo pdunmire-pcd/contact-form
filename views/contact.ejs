@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact – Paris Dunmire</title>
+    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="icon" type="image/jpeg" href="/images/favicon.jpg">
+    <script src="/js/main.js" defer></script>
+</head>
+<body>
+
+    <%- include('partials/navbar') %>
+
+    <form action="/submit" method="POST">
+        <h1>Contact Form</h1>
+        
+        <div class="form-grid">
+            <div>
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" name="fname">
+                <span class="error-message" id="fname-error"></span>
+            </div>
+
+            <div>
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" name="lname">
+                <span class="error-message" id="lname-error"></span>
+            </div>
+
+            <div>
+                <label for="jobtitle">Job Title</label>
+                <input type="text" id="jobtitle" name="jobtitle">
+            </div>
+
+            <div>
+                <label for="company">Company Name</label>
+                <input type="text" id="company" name="company">
+            </div>
+
+            <div>
+                <label for="linkedinUrl">LinkedIn URL</label>
+                <input type="url" id="linkedinUrl" name="linkedinUrl">
+                <span class="error-message" id="linkedinUrl-error"></span>
+            </div>
+
+            <div>
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email">
+                <span class="error-message" id="email-error"></span>
+            </div>
+
+            <div class="two-col">
+                <label for="howDidWeMeet">How Did We Meet?</label>
+                <select id="howDidWeMeet" name="howDidWeMeet">
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="conference">Conference</option>
+                    <option value="webinar">Webinar</option>
+                    <option value="referral">Referral</option>
+                    <option value="other">Other</option>
+                </select>
+                <span class="error-message" id="howDidWeMeet-error"></span>
+            </div>
+
+            <div class="hidden" id="otherContainer">
+                <label for="other">If "Other", please specify</label>
+                <input type="text" id="other" name="other">
+            </div>
+
+            <div class="full-width">
+                <label for="message">Message</label>
+                <textarea id="message" name="message"></textarea>
+            </div>
+        </div>
+
+        <div class="preferences">
+            <div class="checkbox-group">
+                <input type="checkbox" id="mailingList" name="mailingList">
+                <label for="mailingList">Please add me to your mailing list</label>
+            </div>
+
+            <div class="radio-group hidden" id="emailFormatGroup">
+                <span>Choose an email format:</span>
+                <input type="radio" id="html" name="emailFormat" value="html" checked>
+                <label for="html">HTML</label>
+                <input type="radio" id="text" name="emailFormat" value="text">
+                <label for="text">Text</label>
+            </div>
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+
+</body>
+</html>

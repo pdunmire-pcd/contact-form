@@ -3,92 +3,210 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact-Form</title>
+    <title>Paris Dunmire - Resume</title>
     <link rel="stylesheet" href="/styles/styles.css">
     <link rel="icon" type="image/jpeg" href="/images/favicon.jpg">
-    <script src="/js/main.js" defer></script>
 </head>
 <body>
-    <form action="/submit" method="POST">
-        <h1>Contact Form</h1>
-        
-        <div class="form-grid">
-            <div>
-                <label for="fname">First Name</label>
-                <input type="text" id="fname" name="fname">
-                <span class="error-message" id="fname-error"></span>
-            </div>
 
-            <div>
-                <label for="lname">Last Name</label>
-                <input type="text" id="lname" name="lname">
-                <span class="error-message" id="lname-error"></span>
-            </div>
+    <%- include('partials/navbar') %>
 
-            <div>
-                <label for="jobtitle">Job Title</label>
-                <input type="text" id="jobtitle" name="jobtitle">
-            </div>
-
-            <div>
-                <label for="company">Company Name</label>
-                <input type="text" id="company" name="company">
-            </div>
-
-            <div>
-                <label for="linkedinUrl">LinkedIn URL</label>
-                <input type="url" id="linkedinUrl" name="linkedinUrl">
-                <span class="error-message" id="linkedinUrl-error"></span>
-            </div>
-
-            <div>
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email">
-                <span class="error-message" id="email-error"></span>
-            </div>
-
-            <div class="two-col">
-                <label for="howDidWeMeet">How Did We Meet?</label>
-                <select id="howDidWeMeet" name="howDidWeMeet">
-                    <option value="" disabled selected>Select an option</option>
-                    <option value="conference">Conference</option>
-                    <option value="webinar">Webinar</option>
-                    <option value="referral">Referral</option>
-                    <option value="other">Other</option>
-                </select>
-                <span class="error-message" id="howDidWeMeet-error"></span>
-            </div>
-
-            <div class="hidden" id="otherContainer">
-                <label for="other">If "Other", please specify</label>
-                <input type="text" id="other" name="other">
-            </div>
-
-            <div class="full-width">
-                <label for="message">Message</label>
-                <textarea id="message" name="message"></textarea>
-            </div>
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header">
+            <img src="/images/Photo_of_me.jpg" alt="Paris Allkurti" class="profile-photo">
+            <h1 class="name">Paris Allkurti</h1>
+            <table class="contact-table">
+                <tbody><tr>
+                    <td class="contact-left">
+                        <a href="mailto:parisdunmire19@gmail.com">parisdunmire19@gmail.com</a>
+                    </td><td class="contact-right">
+                        <a href="https://www.linkedin.com/in/paris-allkurti-591550252/" target="_blank">LinkedIn</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="contact-left">(253) 325-4977</td>
+                    <td class="contact-right"><a href="https://github.com/pdunmire-pcd" target="_blank">GitHub</a></td>
+                </tr>
+            </tbody></table>
         </div>
 
-        <div class="preferences">
-            <div class="checkbox-group">
-                <input type="checkbox" id="mailingList" name="mailingList">
-                <label for="mailingList">Please add me to your mailing list</label>
-            </div>
-
-            <div class="radio-group hidden" id="emailFormatGroup">
-                <span>Choose an email format:</span>
-                <input type="radio" id="html" name="emailFormat" value="html" checked>
-                <label for="html">HTML</label>
-                <input type="radio" id="text" name="emailFormat" value="text">
-                <label for="text">Text</label>
-            </div>
+        <!-- SUMMARY -->
+        <div class="section">
+            <h2 class="section-title">Summary</h2>
+            <p class="body-text">Passionate and detail-oriented Computer Science student pursuing a career in software development with a strong foundation in programming, data structures, and web technologies.</p>
         </div>
 
-        <button type="submit">Submit</button>
-    </form>
-    <footer>
-        <p>GitHub Repository: <a href="https://github.com/pdunmire-pcd/contact-form" target="_blank">https://github.com/pdunmire-pcd/contact-form</a></p>
-    </footer>
+        <!-- EDUCATION -->
+        <div class="section">
+            <h2 class="section-title">Education</h2>
+            <table class="item-table">
+                <tbody><tr>
+                    <td class="item-left"><strong>Green River College</strong> – Auburn, WA</td>
+                    <td class="item-right">Present</td>
+                </tr>
+            </tbody></table>
+            <p class="body-text">Bachelor of Applied Science, expected June 2026</p>
+            <p class="body-text">Major: Software Development (Applied Computer Science)</p>
+            <p class="body-text">Relevant Coursework:</p>
+            <table class="two-column-list">
+                <tbody><tr>
+                    <td>
+                        <ul>
+                            <li>Data-driven Web Applications</li>
+                            <li>Node - Server Side Scripting</li>
+                            <li>Full Stack Web Development</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Systems Programming (bitwise operations, exceptions, networking)</li>
+                            <li>Introduction to Computer Systems (programming side)</li>
+                            <li>Memory Hierarchy/Processes &amp; Threads/Run Time Analysis</li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody></table>
+        </div>
+
+        <div class="section">
+            <table class="item-table">
+                <tbody><tr>
+                    <td class="item-left"><strong>Arizona State University</strong> – Phoenix, AZ</td>
+                    <td class="item-right">January 2024 - June 2025</td>
+                </tr>
+                </tbody></table>
+                    <p class="body-text">Associate of Applied Science</p>
+                    <p class="body-text">Major: Full Stack Web Development</p>
+                    <p class="body-text">Relevant Coursework:</p>
+                <table class="two-column-list">
+                    <tbody><tr>
+                        <td>
+                            <ul>
+                                <li>Object Oriented Programming + Data</li>
+                                <li>Introduction to Web Design</li>
+                            </ul>
+                        </td>
+                        <td>
+                        <ul>
+                            <li>Full Stack Web Development</li>
+                            <li>Communication Business &amp; Professionals</li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody></table>
+        </div>
+
+        <div class="section">
+            <table class="item-table">
+                <tbody><tr>
+                        <td class="item-left"><strong>Bates Technical HighSchool</strong> – Tacoma, WA</td>
+                    <td class="item-right">January 2021 - June 2023</td>
+                </tr>
+                </tbody></table>
+                    <p class="body-text">Associate of Applied Science</p>
+                    <p class="body-text">Major: Software Development</p>
+                    <p class="body-text">Relevant Coursework:</p>
+                <table class="two-column-list">
+                    <tbody><tr>
+                        <td>
+                            <ul>
+                                <li>Object Oriented Programming + Data</li>
+                                <li>Introduction to Web Design</li>
+                                <li>Dynamic Web Applications</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Open Sourcing Programming</li>
+                                <li>Mobile Application Development</li>
+                                <li>Web Programming W/Java</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody></table>
+        </div>
+
+        <!-- SKILLS AND CERTIFICATIONS -->
+        <div class="section">
+            <h2 class="section-title">Skills and Certifications</h2>
+            <table class="two-column-list">
+                <tbody><tr>
+                    <td>
+                        <ul>
+                            <li>Languages: Java, SQL, JavaScript, Python</li>
+                            <li>Web: HTML5/CSS3, Bootstrap, JSON, React/Next.js</li>
+                            <li>Tools: Git &amp; GitHub, Visual Studio Code, Node.js &amp; npm</li>
+                            <li>Frameworks &amp; Libraries : React, Next.js</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Development: netlify, Vercel</li>
+                            <li>Design &amp; Productivity: Figma &amp; Canva</li>
+                            <li>Certification: ASU Global Career Accelorator: JavaScript Specialist</li>
+                            <li>Certification: Publicis Sapient Web Development Project Certificate</li>
+                            <li>Intercultural Skills Certificate</li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody></table>
+        </div>
+
+        <!-- EXPERIENCE -->
+        <div class="section">
+            <h2 class="section-title">Experience</h2>
+            
+            <table class="item-table">
+                <tbody><tr>
+                    <td class="item-left"><strong>Nordstrom</strong> – Tacoma, WA</td>
+                    <td class="item-right">2025</td>
+                </tr>
+            </tbody></table>
+            <p class="body-text">Sales Person Stylist</p>
+            <ul class="single-column-list">
+                <li>Delivered personalized styling and wardrobe recommendations by assessing client lifestyle, fit, and aesthetic preferences, driving repeat clientele and long term customer relationships.</li>
+                <li>Consistently exceeded sales goals through relationship based selling, strategic outfit building, and deep product knowledge across designers, fabrics, and seasonal trends.</li>
+                <li>Provided elevated in-store experiences by managing fittings, curated complete looks, and maintaining visually compelling merchandise aligned with brand standards.</li>
+            </ul>
+
+            <table class="item-table">
+                <tbody><tr>
+                    <td class="item-left"><strong>Starbucks</strong> – Tacoma, WA</td>
+                    <td class="item-right">2023-late 2024</td>
+                </tr>
+            </tbody></table>
+            <p class="body-text">Barista/Shift Supervisor</p>
+            <ul class="single-column-list">
+                <li>Progressed from Barista to Shift Supervisor and Coffee Master, leading floor operations, training new partners, and maintaining speed, quality, and customer experience standards in a high-volume environment while consistently meeting operational KPIs.</li>
+                <li>Recognized as a 2024 Area Barista Champion, demonstrating advanced coffee knowledge, product mastery, and communication skills through competitive evaluations, customer storytelling, and peer education.</li>
+                <li>Led shifts with an emphasis on systems, coaching, and problem-solving, balancing labor, inventory, and real-time decision-making while fostering an inclusive, calm, and performance-driven team culture.</li>
+            </ul>
+
+            <table class="item-table">
+                <tbody><tr>
+                    <td class="item-left"><strong>Darden Company - Olive Garden</strong> – Tacoma, WA</td>
+                    <td class="item-right">2016</td>
+                </tr>
+            </tbody></table>
+            <p class="body-text">Server</p>
+            <ul class="single-column-list">
+                <li>Advanced from Hostess to Food Runner to Server, gaining end-to-end understanding of front-of-house operations, guest flow, and service coordination in a fast-paced, high-volume dining environment.</li>
+                <li>Delivered consistent, high-quality guest experiences by managing multiple tables, prioritizing tasks under pressure, and communicating clearly with kitchen and service teams to ensure accuracy, timing, and satisfaction.</li>
+                <li>Strengthened teamwork, time management, and problem-solving skills, adapting quickly to changing floor needs, resolving guest concerns professionally, and supporting team efficiency during peak service hours.</li>
+            </ul>
+        </div>
+
+        <!-- ACHIEVEMENTS AND ACTIVITIES -->
+        <div class="section">
+            <h2 class="section-title">Achievements and Activities</h2>
+            <ul class="single-column-list">
+                <li>Starbucks Area Barista Champion (2024) — Selected through competitive performance, product mastery, and communication-based evaluations across multiple store locations.</li>
+                <li>Associate of Applied Science, Software Development — Completed alongside high school through a technical program; foundation in Java, data structures, and application development.</li>
+                <li>Creative Technology &amp; Digital Design — Combined software development, UX thinking, and visual design to create user-centered digital experiences for real-world clients.</li>
+            </ul>
+        </div>
+    </div>
+
 </body>
 </html>

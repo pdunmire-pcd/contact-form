@@ -1,5 +1,6 @@
-/* styles.css */
-
+/* =============================================
+   BASE RESET
+   ============================================= */
 * {
     margin: 0;
     padding: 0;
@@ -9,25 +10,76 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f5f5f5;
-    padding: 40px 20px;
 }
 
+/* =============================================
+   NAVBAR
+   ============================================= */
+.navbar {
+    background-color: #efeddf;
+    padding: 0 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(247, 168, 219, 0.3);
+}
+
+.nav-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+}
+
+.nav-brand {
+    color: #060606;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    color: #020202;
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.nav-links a:hover {
+    background-color: #ff0000;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* =============================================
+   CONTACT FORM PAGE
+   ============================================= */
 form {
     max-width: 900px;
-    margin: 0 auto;
+    margin: 40px auto;
     background: white;
     padding: 40px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
+form h1 {
     text-align: center;
     margin-bottom: 30px;
     color: #333;
 }
 
-/* Grid layout for form fields */
 .form-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -35,17 +87,14 @@ h1 {
     margin-bottom: 20px;
 }
 
-/* Full width items */
 .full-width {
     grid-column: 1 / -1;
 }
 
-/* Two column items */
 .two-col {
     grid-column: span 2;
 }
 
-/* Form field styling */
 label {
     display: block;
     margin-bottom: 5px;
@@ -75,7 +124,6 @@ select {
     cursor: pointer;
 }
 
-/* Checkbox and radio section */
 .preferences {
     display: flex;
     flex-direction: column;
@@ -95,9 +143,8 @@ input[type="radio"] {
     cursor: pointer;
 }
 
-/* Submit button */
 button[type="submit"] {
-    background-color: #007bff;
+    background-color: #ff0000;
     color: white;
     padding: 12px 30px;
     border: none;
@@ -109,29 +156,11 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-    background-color: #0056b3;
+    background-color: #d7408e;
 }
 
-footer {
-    text-align: center;
-    margin-top: 30px;
-    padding: 20px;
-    color: #666;
-    font-size: 14px;
-}
-
-footer a {
-    color: #007bff;
-    text-decoration: none;
-}
-
-footer a:hover {
-    text-decoration: underline;
-}
-
-/* Validation error styling */
 .error-message {
-    display:block;
+    display: block;
     color: #dc3545;
     font-size: 12px;
     margin-top: 5px;
@@ -149,10 +178,235 @@ textarea.invalid {
 input.valid,
 select.valid,
 textarea.valid {
-    border: 2px solid #28a745;
+    border: 2px solid #f3bacf;
 }
 
-/* Hide elements by default (for optional challenges) */
 .hidden {
     display: none;
+}
+
+/* =============================================
+   CONFIRMATION & ADMIN PAGES
+   ============================================= */
+.page-wrapper {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.page-wrapper h1 {
+    color: #1a1a2e;
+    margin-bottom: 24px;
+}
+
+.card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    padding: 28px;
+    margin-bottom: 20px;
+}
+
+.card-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+.card-row label {
+    font-weight: bold;
+    color: #555;
+    min-width: 130px;
+}
+
+.card-row span {
+    color: #333;
+}
+
+.timestamp {
+    font-size: 12px;
+    color: #999;
+    margin-top: 10px;
+}
+
+.btn {
+    display: inline-block;
+    background: #ff0000;
+    color: #fff;
+    padding: 10px 22px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
+    margin-top: 16px;
+}
+
+.btn:hover {
+    background: #b30000;
+}
+
+/* =============================================
+   FOOTER
+   ============================================= */
+footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px;
+    color: #666;
+    font-size: 14px;
+}
+
+footer a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* =============================================
+   RESUME PAGE
+   ============================================= */
+a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: white;
+}
+
+.header {
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.profile-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    float: left;
+    margin-right: 1.5rem;
+}
+
+.contact-table a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.contact-table a:hover {
+    text-decoration: underline;
+    color: #cc003d;
+}
+
+.contact-table td {
+    padding: 0.3rem 0;
+}
+
+.contact-table {
+    width: 70%;
+}
+
+.contact-left {
+    width: 45%;
+    padding-right: 2rem;
+}
+
+.contact-right {
+    width: 45%;
+    padding-left: 3rem;
+}
+
+.name {
+    font-size: 1.8rem;
+    margin: 0 0 0.5rem 0;
+}
+
+.section {
+    margin-bottom: 1.5rem;
+}
+
+.section:last-child {
+    margin-bottom: 0;
+}
+
+.section-title {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid #333;
+    padding-bottom: 0.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.body-text {
+    margin: 0.25rem 0;
+    line-height: 1.4;
+}
+
+.item-table {
+    width: 100%;
+    margin-bottom: 0.25rem;
+}
+
+.item-left {
+    text-align: left;
+}
+
+.item-right {
+    text-align: right;
+    white-space: nowrap;
+    color: #555;
+}
+
+.two-column-list {
+    width: 100%;
+    margin: 0.25rem 0;
+}
+
+.two-column-list td {
+    vertical-align: top;
+    width: 50%;
+}
+
+.single-column-list {
+    margin: 0.25rem 0 1rem 0;
+}
+
+ul {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+}
+
+li {
+    margin-bottom: 0.35rem;
+    line-height: 1.4;
+}
+
+@media print {
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        box-shadow: none;
+        margin: 0;
+    }
+
+    a {
+        color: #000;
+        text-decoration: none;
+    }
 }

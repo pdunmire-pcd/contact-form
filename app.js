@@ -1,5 +1,5 @@
 import express from 'express';
-import { dirname, join } from 'path';
+import { join } from 'path';
 
 const app = express();
 const PORT = 3004;
@@ -9,30 +9,40 @@ const contacts = [];
 
 // Middleware
 app.use(express.static('public'));
-app.use(express.urlencoded({ extended: true })); // parses form data
+app.use(express.urlencoded({ extended: true }));
 
 // Tell Express to use EJS
 app.set('view engine', 'ejs');
 app.set('views', join(import.meta.dirname, 'views'));
 
-// Home page (your form)
+// Home page — resume
 app.get('/', (req, res) => {
   res.render('home');
 });
 
+// Contact form page
+app.get('/contact', (req, res) => {
+  res.render('contact');
+});
+
 // Handle form submission
 app.post('/submit', (req, res) => {
-  const contact = req.body;   // grab form data
-  contacts.push(contact);     // store it in the array
-  res.redirect('/confirmation');
+  const contact = {
+    ...req.body,
+    timestamp: new Date().toLocaleString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+    }),
+  };
+  contacts.push(contact);
+  res.render('confirmation', { contact }); // pass data to confirmation page
 });
 
-// Confirmation page
-app.get('/confirmation', (req, res) => {
-  res.render('confirmation');
-});
-
-// Admin page — shows all submissions
+// Admin page
 app.get('/admin', (req, res) => {
   res.render('admin', { contacts });
 });
