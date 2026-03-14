@@ -558,3 +558,37 @@ li {
 .error-list li {
   margin-bottom: 4px;
 }
+
+/* =============================================
+   NAVBAR RESPONSIVE
+   ============================================= */
+@media (max-width: 768px) {
+  .nav-container {
+    flex-direction: column;
+    height: auto;
+    padding: 12px 0;
+    gap: 10px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  .nav-links a {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-brand {
+    font-size: 15px;
+  }
+
+  .nav-links a {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+}
