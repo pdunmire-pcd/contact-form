@@ -22,7 +22,7 @@
     <% } else { %>
       <% contacts.slice().reverse().forEach((contact, i) => { %>
         <div class="card">
-          <h3 style="margin-bottom:14px;">#<%= contacts.length - i %> — <%= contact.fname %> <%= contact.lname %></h3>
+          <h2 style="margin-bottom:14px;">#<%= contacts.length - i %> — <%= contact.fname %> <%= contact.lname %></h2>
 
           <% if (contact.jobtitle || contact.company) { %>
           <div class="card-row">

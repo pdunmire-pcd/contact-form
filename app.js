@@ -25,17 +25,6 @@ const pool = mysql.createPool({
   port: process.env.DB_PORT,
 }).promise();
 
-app.get('/db-test', async (req, res) => {
-  try {
-    const [rows] = await pool.query("SELECT * FROM contacts");
-    res.send(rows);
-  }
-  catch (err) {
-    console.error('Database connection error:', err);
-    res.status(500).send('Database error', err.message);
-  }
-});
-
 // Tell Express to use EJS
 app.set('view engine', 'ejs');
 app.set('views', join(__dirname, 'views'));
@@ -45,9 +34,14 @@ app.get('/', (req, res) => {
   res.render('home');
 });
 
+// Portfolio page
+app.get('/portfolio', (req, res) => {
+  res.render('portfolio');
+});
+
 // Contact form page
 app.get('/contact', (req, res) => {
-  res.render('contact');
+  res.render('contact', { errors: [], formData: {} });
 });
 
 // Handle form submission
@@ -58,13 +52,34 @@ app.post('/submit', async (req, res) => {
     mailingList, emailFormat
   } = req.body;
 
+  // --- SERVER-SIDE VALIDATION ---
+  const validHowWeMet = ['conference', 'webinar', 'referral', 'other'];
+  const errors = [];
+
+  if (!fname || !fname.trim()) errors.push('First name is required.');
+  if (!lname || !lname.trim()) errors.push('Last name is required.');
+
+  if (!howDidWeMeet || !validHowWeMet.includes(howDidWeMeet)) {
+    errors.push('Please select a valid "How Did We Meet?" option.');
+  }
+
+  if (mailingList === 'on') {
+    if (!emailFormat || !['html', 'text'].includes(emailFormat)) {
+      errors.push('Please select an email format (HTML or Text).');
+    }
+  }
+
+  if (errors.length > 0) {
+    return res.render('contact', {
+      errors,
+      formData: req.body
+    });
+  }
+  // --- END VALIDATION ---
+
   const timestamp = new Date().toLocaleString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
+    year: 'numeric', month: 'long', day: 'numeric',
+    hour: '2-digit', minute: '2-digit', second: '2-digit',
   });
 
   const sql = `
@@ -79,7 +94,6 @@ app.post('/submit', async (req, res) => {
       linkedinUrl, howDidWeMeet, other, message,
       mailingList ? 1 : 0, emailFormat, timestamp
     ]);
-
     const contact = { ...req.body, timestamp };
     res.render('confirmation', { contact });
   } catch (err) {
@@ -89,7 +103,23 @@ app.post('/submit', async (req, res) => {
 });
 
 // Admin page
-app.get('/admin', async (req, res) => {
+// Admin login form
+app.get('/admin', (req, res) => {
+  res.render('login', { error: null });
+});
+
+// Handle login submission
+app.post('/admin/login', (req, res) => {
+  const { username, password } = req.body;
+  if (username === process.env.ADMIN_USER && password === process.env.ADMIN_PASS) {
+    res.redirect('/admin/dashboard');
+  } else {
+    res.render('login', { error: 'Invalid username or password. Please try again.' });
+  }
+});
+
+// The actual admin dashboard
+app.get('/admin/dashboard', async (req, res) => {
   try {
     const [rows] = await pool.execute('SELECT * FROM contacts ORDER BY id DESC');
     res.render('admin', { contacts: rows });

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio – Paris Allkurti</title>
+  <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+</head>
+<body>
+  <%- include('partials/navbar') %>
+
+  <div class="portfolio-wrapper">
+    <div class="portfolio-header">
+      <h1>Portfolio</h1>
+      <p>A collection of projects built across coursework, freelance work, and personal exploration.</p>
+    </div>
+
+    <div class="portfolio-grid">
+
+      <div class="project-card">
+        <div class="project-img-wrap">
+          <img src="/images/contact_form_screenshot.png" alt="Contact form page showing input fields for name, email, and how we met">
+        </div>
+        <div class="project-body">
+          <h2>Contact Form App</h2>
+          <p class="project-context">SDEV 305 · Green River College</p>
+          <p class="project-desc">Full-stack contact form with server-side validation, MySQL storage, and a password-protected admin dashboard.</p>
+          <div class="project-tags">
+            <span>Node.js</span><span>Express</span><span>EJS</span><span>MySQL</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/pdunmire-pcd/contact-form" target="_blank">GitHub →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img-wrap">
+          <img src="/images/matcha_cat_screenshot.png" alt="Matcha Cat homepage showing the café menu and navigation">
+        </div>
+        <div class="project-body">
+          <h2>Matcha Cat Café</h2>
+          <p class="project-context">SDEV 305 · Team Project</p>
+          <p class="project-desc">A cat-themed café ordering app built as a team, featuring Express routing, EJS views, and MySQL integration.</p>
+          <div class="project-tags">
+            <span>Node.js</span><span>Express</span><span>EJS</span><span>MySQL</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/nadia5129/matcha-cat" target="_blank">GitHub →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img-wrap">
+          <img src="/images/Compass_screenshot.png" alt="Compass chatbot interface showing the AI chat window, deadline sidebar, and context panel">
+        </div>
+        <div class="project-body">
+          <h2>Compass – AI Productivity Assistant</h2>
+          <p class="project-context">Personal Project</p>
+          <p class="project-desc">An AI-powered productivity app that tracks deadlines, remembers your schedule, and follows up when something is due — built with Claude and deployed on Digital Ocean.</p>
+          <div class="project-tags">
+            <span>Next.js</span><span>React</span><span>Claude API</span><span>MySQL</span><span>Tailwind</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/pdunmire-pcd/compass" target="_blank">GitHub →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img-wrap">
+          <img src="/images/thepreparedbirth_screenshot.png" alt="The Prepared Birth website homepage showing doula services and navigation">
+        </div>
+        <div class="project-body">
+          <h2>The Prepared Birth</h2>
+          <p class="project-context">Freelance Client Project</p>
+          <p class="project-desc">A full client website for a birth doula business — includes service pages, pricing, testimonials, and contact form integration.</p>
+          <div class="project-tags">
+            <span>Next.js</span><span>React</span><span>Vercel</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/pdunmire-pcd/the-prepared-birth" target="_blank">GitHub →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img-wrap">
+          <img src="/images/cat_collect_stars_screenshot.png" alt="Cat Cat Stellar Game screenshot showing a cat astronaut collecting stars on a Game Boy Advance screen">
+        </div>
+        <div class="project-body">
+          <h2>Cat Cat Stellar Game</h2>
+          <p class="project-context">GBA Microjam · SDEV 301</p>
+          <p class="project-desc">A GBA microgame featuring a cat astronaut collecting stars — custom pixel art sprites, random placement, collision detection, and win/lose logic.</p>
+          <div class="project-tags">
+            <span>C++</span><span>Butano</span><span>GBA SDK</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/pdunmire-pcd/microjam" target="_blank">GitHub →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img-wrap">
+          <img src="/images/hot_pursuit_screenshot.png" alt="Hot Pursuit GBA game screenshot showing the mouse player dodging cats and collecting cheese">
+        </div>
+        <div class="project-body">
+          <h2>Hot Pursuit</h2>
+          <p class="project-context">SDEV 301 · GBA Arcade Game</p>
+          <p class="project-desc">Play as a mouse named Squeaky dodging a relentless pack of cats. Features escalating enemy speed, a cheese powerup, and custom pixel art sprites.</p>
+          <div class="project-tags">
+            <span>C++</span><span>Butano</span><span>GBA SDK</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/pdunmire-pcd/hot-pursuit" target="_blank">GitHub →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img-wrap">
+          <img src="/images/pizza_form.png" alt="Pizza order form showing topping selections and order submission">
+        </div>
+        <div class="project-body">
+          <h2>Pizza Order Form</h2>
+          <p class="project-context">SDEV 305 · Practice Project</p>
+          <p class="project-desc">A pizza order form built to practice Express routing, EJS templating, and form handling.</p>
+          <div class="project-tags">
+            <span>Node.js</span><span>Express</span><span>EJS</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/pdunmire-pcd/pizza" target="_blank">GitHub →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img-wrap">
+          <img src="/images/icecream_form.png" alt="Ice cream order form showing flavor and topping selections">
+        </div>
+        <div class="project-body">
+          <h2>Ice Cream Order Form</h2>
+          <p class="project-context">SDEV 305 · Practice Project</p>
+          <p class="project-desc">An ice cream order form built to practice Express routing, EJS templating, and form handling.</p>
+          <div class="project-tags">
+            <span>Node.js</span><span>Express</span><span>EJS</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/pdunmire-pcd/ice-cream" target="_blank">GitHub →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img-wrap">
+          <img src="/images/vacation_booker.png" alt="Vacation booking form showing destination and date selection fields">
+        </div>
+        <div class="project-body">
+          <h2>Vacation Booking Form</h2>
+          <p class="project-context">SDEV 305 · Practice Project</p>
+          <p class="project-desc">A vacation booking form built to practice Express routing, EJS templating, and form handling.</p>
+          <div class="project-tags">
+            <span>Node.js</span><span>Express</span><span>EJS</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/pdunmire-pcd/vacation-booking-form" target="_blank">GitHub →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
